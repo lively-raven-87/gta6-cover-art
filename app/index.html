@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Vice Cover Lab — turn your photos and a caption into a multi-panel GTA-style poster, offline in your browser.">
+<title>Vice Cover Lab — GTA-style cover art maker</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">VICE COVER LAB</div>
+  <p class="tagline">Your photos, a caption, and a Vice City sunset — into poster art, offline.</p>
+</header>
+<main class="app">
+  <section class="controls" aria-label="Cover controls">
+    <h1>Make your cover</h1>
+    <p class="intro">Pick photos for each panel, crop them with zoom and pan, write your
+      caption, then export every post size in one click. Nothing leaves your machine.</p>
+
+    <fieldset class="panel-count">
+      <legend>Panels</legend>
+      <label><input type="radio" name="panels" value="2" checked> 2 — diagonal split</label>
+      <label><input type="radio" name="panels" value="3"> 3 — hero + pair</label>
+      <label><input type="radio" name="panels" value="4"> 4 — four-way grid</label>
+    </fieldset>
+
+    <div id="panels"></div>
+
+    <label>Caption
+      <input id="caption" type="text" maxlength="28" value="VICE CITY">
+    </label>
+    <label>Subtitle
+      <input id="subtitle" type="text" maxlength="28" value="SUNSET HEIST">
+    </label>
+    <label>Colour grade
+      <select id="grade">
+        <option value="sunset" selected>Sunset — orange to magenta</option>
+        <option value="neon">Neon — cyan to magenta</option>
+        <option value="noir">Noir — washed-out night</option>
+      </select>
+    </label>
+    <label>Export size
+      <select id="size">
+        <option value="square" selected>Square 1080 x 1080</option>
+        <option value="portrait">Portrait 1080 x 1350</option>
+        <option value="story">Story 1080 x 1920</option>
+        <option value="wide">Wide 1920 x 1080</option>
+      </select>
+    </label>
+
+    <button id="export-one" type="button">Export this size</button>
+    <button id="export-all" type="button" class="primary">Export all 4 sizes</button>
+    <p id="status" role="status"></p>
+  </section>
+  <section class="stage" aria-label="Live preview">
+    <canvas id="cover" width="1080" height="1080" aria-label="The cover preview"></canvas>
+    <p class="hint">Live preview — what you see is what the PNG gets.</p>
+  </section>
+</main>
+<script src="./src/poster.js"></script>
+<script src="./src/shots.js"></script>
+<script src="./src/main.js"></script>
+</body>
+</html>
